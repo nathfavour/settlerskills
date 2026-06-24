@@ -112,3 +112,21 @@ To guarantee software quality matches high-end systems engineering criteria, the
 2. **NO Cloud Leakage:** Code blocks must never use external telemetry services, tracking payloads, remote logger endpoints, or non-local secrets management APIs.
 3. **NO Block-Stalling Sync Calls:** All local file-system or network operations must use non-blocking, asynchronous, event-driven interfaces to prevent daemon pipeline lockup.
 4. **NO Monolithic Bloat:** Avoid importing heavy wrapper frameworks or secondary kitchen-sink utilities. Use native platform primitives and clean, localized utility blocks.
+
+---
+
+## 6. Meta-Architecture Integrity & Quality Control Enforcement
+
+### 6.1 Meta-Boundary Declaration
+`ARCHITECTURE.md` functions exclusively as the top-level technical specification and invariant map for the entire `settlerskills` workspace. 
+
+* **The Distinction Axiom:** This file is NOT an agentic skill, tool, configuration profile, or executable plugin within the project topology. It is the structural boundary layer that governs how the container itself is arranged. 
+* **The Containment Axiom:** The skills inside `settlerskills` are isolated modules living exclusively inside the `/skill` directory. Agents must never interpret this structural specification as an actionable codebase behavior or a functional router node.
+
+### 6.2 Quality Control & Anti-Slop Compilation Gates
+Before any cycle commit, automated pull request generation, or workspace write operation, the AI agent must validate its target files against this meta-specification. A file is classified as non-compliant "AI slop" and will fail the architectural compilation gate if it contains any of the following metadata characteristics:
+
+1. **Conversational Scaffolding:** No raw LLM meta-instructions, prompt design drafts, step-by-step assistant setups, chat history transcripts, or conversational placeholders (e.g., `// TODO: implement later`, `// Ask user for parameter`).
+2. **Context Bleed:** The internal rule files inside `/skill/rules/` must maintain absolute functional isolation. No payment rail execution guidelines (`01_functional_rpc.md`) may bleed into cryptographic key storage instructions (`02_local_e2ee_vault.md`).
+3. **Instruction Integrity Check:** Run an explicit structural linting validation pass to confirm that `SKILL.md` contains only clean context routing maps and workflow triggers, devoid of inline implementation templates or block commentary.
+
