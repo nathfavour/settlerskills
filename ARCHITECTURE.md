@@ -22,11 +22,11 @@ The system architecture is structured into four distinct execution layers. Each 
 
 ```
 
-[Local E2EE Vault] ────(Ephemeral Key)────► [Transaction Serializer]
-│
-(Signed Transaction)
-▼
-[RPC Event Stream] ◄──(Subscription Loop)─── [Functional RPC Rail]
+[Local E2EE Vault] ──(Ephemeral Key)──► [Transaction Serializer]
+                                                │
+                                       (Signed Transaction)
+                                                ▼
+[RPC Event Stream] ◄──(Sub Loop)─────── [Functional RPC Rail]
 
 ```
 
@@ -68,7 +68,7 @@ All interaction with the Solana blockchain must drop the legacy monolithic progr
 
 To permit automated execution by autonomous cron or event loops, a strict, local risk-evaluation state engine is interposed before the broadcast layer.
 
-* **Invariant Invariants:**
+### System Invariants
 1. **Velocity Cap:** Maximum volume allowances capped at a strictly defined local constant per 24-hour UTC window.
 2. **Destination Whitelisting:** Transactions targeting addresses outside an encrypted local configuration lookup manifest are rejected automatically at the compilation level.
 3. **Simulated State Assertion:** Prior to raw broadcast, every transaction payload must undergo local RPC simulation (`simulateTransaction`). If the simulation reports modified account balances deviating from predefined boundary differentials, execution is halted immediately.
@@ -84,7 +84,7 @@ settlerskills/
 ├── README.md                      # Vision, installation, quick-start matrix, manual usage
 ├── LICENSE                        # MIT License for unencumbered upstream ingestion
 ├── ARCHITECTURE.md                # Global master engineering specification & boundary layer
-├── install.sh                     # Zero-dependency bootstrap script copying rules to ~/.settlerskills/plugins
+├── install.sh                     # Zero-dependency bootstrap script copying rules to ~/.settlerskills/plugins/rules
 └── skill/
     ├── SKILL.md                   # Central context router and entry point for LLM execution
     ├── rules/
@@ -100,43 +100,43 @@ settlerskills/
 
 1. `/README.md`
    - **Type**: Markdown Documentation File
-   - **Path**: [README.md](file:///home/nathfavour/code/nathfavour/settlerskills/README.md)
+   - **Path**: [README.md](./README.md)
    - **Description**: Details sovereign payment infrastructure philosophy, architectural layers, and manual setup guides.
 2. `/LICENSE`
    - **Type**: Plain Text License File
-   - **Path**: [LICENSE](file:///home/nathfavour/code/nathfavour/settlerskills/LICENSE)
+   - **Path**: [LICENSE](./LICENSE)
    - **Description**: MIT License permitting unencumbered upstream integration.
 3. `/ARCHITECTURE.md`
    - **Type**: Markdown System Specification
-   - **Path**: [ARCHITECTURE.md](file:///home/nathfavour/code/nathfavour/settlerskills/ARCHITECTURE.md)
+   - **Path**: [ARCHITECTURE.md](./ARCHITECTURE.md)
    - **Description**: Defines unalterable system boundaries, components, memory constraints, and quality gates.
 4. `/install.sh`
    - **Type**: Bash Executable Script
-   - **Path**: [install.sh](file:///home/nathfavour/code/nathfavour/settlerskills/install.sh)
-   - **Description**: Setups dependencies and copies local skill rule files into the target plugin loading path (`~/.settlerskills/plugins/rules`).
+   - **Path**: [install.sh](./install.sh)
+   - **Description**: Setups dependencies and copies local skill rule files into the target plugin loading path (`~/.settlerskills/plugins/rules`). This global system path serves as the centralized machine storage before the local shell injection occurs.
 5. `/skill/SKILL.md`
    - **Type**: Markdown Skill Router
-   - **Path**: [SKILL.md](file:///home/nathfavour/code/nathfavour/settlerskills/skill/SKILL.md)
+   - **Path**: [SKILL.md](./skill/SKILL.md)
    - **Description**: Entry point router utilizing mapping tables to direct agent focus to subset rules without bloated files.
 6. `/skill/rules/01_functional_rpc.md`
    - **Type**: Markdown Rule Document
-   - **Path**: [01_functional_rpc.md](file:///home/nathfavour/code/nathfavour/settlerskills/skill/rules/01_functional_rpc.md)
+   - **Path**: [01_functional_rpc.md](./skill/rules/01_functional_rpc.md)
    - **Description**: Enforces functional `@solana/kit` usage and prohibits legacy `@solana/web3.js` API wrappers.
 7. `/skill/rules/02_local_e2ee_vault.md`
    - **Type**: Markdown Rule Document
-   - **Path**: [02_local_e2ee_vault.md](file:///home/nathfavour/code/nathfavour/settlerskills/skill/rules/02_local_e2ee_vault.md)
+   - **Path**: [02_local_e2ee_vault.md](./skill/rules/02_local_e2ee_vault.md)
    - **Description**: Enforces WebCrypto AES-GCM-256 specifications, PBKDF2 parameters, and memory zeroing invariants.
 8. `/skill/rules/03_drain_protection.md`
    - **Type**: Markdown Rule Document
-   - **Path**: [03_drain_protection.md](file:///home/nathfavour/code/nathfavour/settlerskills/skill/rules/03_drain_protection.md)
+   - **Path**: [03_drain_protection.md](./skill/rules/03_drain_protection.md)
    - **Description**: Outlines velocity, whitelists, and local transaction simulation balance differential checks.
 9. `/skill/templates/loop.go`
    - **Type**: Go Code Template
-   - **Path**: [loop.go](file:///home/nathfavour/code/nathfavour/settlerskills/skill/templates/loop.go)
+   - **Path**: [loop.go](./skill/templates/loop.go)
    - **Description**: Pristine reference loop mimicking a low-allocation websocket connection framework.
 10. `/skill/templates/sign.ts`
     - **Type**: TypeScript Code Template
-    - **Path**: [sign.ts](file:///home/nathfavour/code/nathfavour/settlerskills/skill/templates/sign.ts)
+    - **Path**: [sign.ts](./skill/templates/sign.ts)
     - **Description**: Reference modern transactional compilation and memory sanitization implementation.
 
 ### 4.2 SKILL.md Routing Matrix
@@ -145,6 +145,7 @@ The central routing mechanism maps file extensions and incoming automated agent 
 
 * **Context Activation Rule:** If the current working workspace buffer focuses on file operations within backend structures or raw data transport loops, the agent must load `rules/01_functional_rpc.md`.
 * **Security Isolation Rule:** If code changes touch key storage handlers, configuration variables, or file-system reads, the agent must immediately append `rules/02_local_e2ee_vault.md` to its context window.
+
 
 
 ---
