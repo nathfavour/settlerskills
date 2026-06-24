@@ -17,8 +17,13 @@ else
     echo "Warning: Go is not installed. Go is required for the RPC stream daemon core."
 fi
 
+# Define global plugin directory for settlerskills loading
+GLOBAL_PLUGIN_DIR="${HOME}/.settlerskills/plugins"
+mkdir -p "${GLOBAL_PLUGIN_DIR}"
+cp -R skill/rules "${GLOBAL_PLUGIN_DIR}/"
+
 echo "Bootstrapped successfully! Project layout verified:"
 echo "- ARCHITECTURE.md: Configured"
 echo "- skill/SKILL.md: Configured"
-echo "- rules/ : Populated"
-echo "- templates/ : Populated"
+echo "- Rules copied to local plugin path: ${GLOBAL_PLUGIN_DIR}/rules"
+
