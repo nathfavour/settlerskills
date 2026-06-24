@@ -81,26 +81,71 @@ The workspace structure is optimized for progressive context injection. It ensur
 
 ```
 settlerskills/
-├── README.md                      # Vision, installation, quick-start matrix
-├── ARCHITECTURE.md                # This global master ingestion specification
-├── install.sh                     # Zero-dependency environment bootstrap script
+├── README.md                      # Vision, installation, quick-start matrix, manual usage
+├── LICENSE                        # MIT License for unencumbered upstream ingestion
+├── ARCHITECTURE.md                # Global master engineering specification & boundary layer
+├── install.sh                     # Zero-dependency bootstrap script copying rules to ~/.settlerskills/plugins
 └── skill/
-    ├── SKILL.md                   # Central Token-Efficient AI Context Router
+    ├── SKILL.md                   # Central context router and entry point for LLM execution
     ├── rules/
     │   ├── 01_functional_rpc.md   # Functional code style laws for SVM interaction
-    │   ├── 02_local_e2ee_vault.md # Technical guardrails for local key encapsulation
+    │   ├── 02_local_e2ee_vault.md # Technical guardrails for local key encapsulation & memory safety
     │   └── 03_drain_protection.md # Risk verification logic and execution constraints
     └── templates/
-        ├── loop.go                # Reference Go implementation for direct RPC stream parsing
+        ├── loop.go                # Reference Go implementation for low-allocation RPC stream parsing
         └── sign.ts                # Reference modern TS instruction-packing pipeline
 ```
 
-### SKILL.md Routing Matrix
+### 4.1 Detailed Codebase Directory Specifications
+
+1. `/README.md`
+   - **Type**: Markdown Documentation File
+   - **Path**: [README.md](file:///home/nathfavour/code/nathfavour/settlerskills/README.md)
+   - **Description**: Details sovereign payment infrastructure philosophy, architectural layers, and manual setup guides.
+2. `/LICENSE`
+   - **Type**: Plain Text License File
+   - **Path**: [LICENSE](file:///home/nathfavour/code/nathfavour/settlerskills/LICENSE)
+   - **Description**: MIT License permitting unencumbered upstream integration.
+3. `/ARCHITECTURE.md`
+   - **Type**: Markdown System Specification
+   - **Path**: [ARCHITECTURE.md](file:///home/nathfavour/code/nathfavour/settlerskills/ARCHITECTURE.md)
+   - **Description**: Defines unalterable system boundaries, components, memory constraints, and quality gates.
+4. `/install.sh`
+   - **Type**: Bash Executable Script
+   - **Path**: [install.sh](file:///home/nathfavour/code/nathfavour/settlerskills/install.sh)
+   - **Description**: Setups dependencies and copies local skill rule files into the target plugin loading path (`~/.settlerskills/plugins/rules`).
+5. `/skill/SKILL.md`
+   - **Type**: Markdown Skill Router
+   - **Path**: [SKILL.md](file:///home/nathfavour/code/nathfavour/settlerskills/skill/SKILL.md)
+   - **Description**: Entry point router utilizing mapping tables to direct agent focus to subset rules without bloated files.
+6. `/skill/rules/01_functional_rpc.md`
+   - **Type**: Markdown Rule Document
+   - **Path**: [01_functional_rpc.md](file:///home/nathfavour/code/nathfavour/settlerskills/skill/rules/01_functional_rpc.md)
+   - **Description**: Enforces functional `@solana/kit` usage and prohibits legacy `@solana/web3.js` API wrappers.
+7. `/skill/rules/02_local_e2ee_vault.md`
+   - **Type**: Markdown Rule Document
+   - **Path**: [02_local_e2ee_vault.md](file:///home/nathfavour/code/nathfavour/settlerskills/skill/rules/02_local_e2ee_vault.md)
+   - **Description**: Enforces WebCrypto AES-GCM-256 specifications, PBKDF2 parameters, and memory zeroing invariants.
+8. `/skill/rules/03_drain_protection.md`
+   - **Type**: Markdown Rule Document
+   - **Path**: [03_drain_protection.md](file:///home/nathfavour/code/nathfavour/settlerskills/skill/rules/03_drain_protection.md)
+   - **Description**: Outlines velocity, whitelists, and local transaction simulation balance differential checks.
+9. `/skill/templates/loop.go`
+   - **Type**: Go Code Template
+   - **Path**: [loop.go](file:///home/nathfavour/code/nathfavour/settlerskills/skill/templates/loop.go)
+   - **Description**: Pristine reference loop mimicking a low-allocation websocket connection framework.
+10. `/skill/templates/sign.ts`
+    - **Type**: TypeScript Code Template
+    - **Path**: [sign.ts](file:///home/nathfavour/code/nathfavour/settlerskills/skill/templates/sign.ts)
+    - **Description**: Reference modern transactional compilation and memory sanitization implementation.
+
+### 4.2 SKILL.md Routing Matrix
 
 The central routing mechanism maps file extensions and incoming automated agent prompts directly to their respective rule bases.
 
 * **Context Activation Rule:** If the current working workspace buffer focuses on file operations within backend structures or raw data transport loops, the agent must load `rules/01_functional_rpc.md`.
 * **Security Isolation Rule:** If code changes touch key storage handlers, configuration variables, or file-system reads, the agent must immediately append `rules/02_local_e2ee_vault.md` to its context window.
+
 
 ---
 
