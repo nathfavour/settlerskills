@@ -84,7 +84,7 @@ settlerskills/
 ├── README.md                      # Vision, installation, quick-start matrix, manual usage
 ├── LICENSE                        # MIT License for unencumbered upstream ingestion
 ├── ARCHITECTURE.md                # Global master engineering specification & boundary layer
-├── install.sh                     # Zero-dependency bootstrap script copying rules to ~/.settlerskills/plugins/rules
+├── install.sh                     # Zero-dependency bootstrap script copying rules to local target (.claude/rules)
 └── skill/
     ├── SKILL.md                   # Central context router and entry point for LLM execution
     ├── rules/
@@ -113,7 +113,8 @@ settlerskills/
 4. `/install.sh`
    - **Type**: Bash Executable Script
    - **Path**: [install.sh](./install.sh)
-   - **Description**: Setups dependencies and copies local skill rule files into the target plugin loading path (`~/.settlerskills/plugins/rules`). This global system path serves as the centralized machine storage before the local shell injection occurs.
+   - **Description**: Setups dependencies and copies local skill rule files into the target plugin loading path (defaults to local sandbox `./.claude/rules`). Supports workspace-relative target configuration directories for sandbox security.
+
 5. `/skill/SKILL.md`
    - **Type**: Markdown Skill Router
    - **Path**: [SKILL.md](./skill/SKILL.md)
